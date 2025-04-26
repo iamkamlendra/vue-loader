@@ -58,6 +58,7 @@ export function resolveScript(
 
   try {
     resolved = compileScript(descriptor, {
+      ...options.script,
       id: scopeId,
       isProd,
       inlineTemplate: enableInline,

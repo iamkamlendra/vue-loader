@@ -58,6 +58,31 @@ export interface VueLoaderOptions {
   experimentalInlineMatchResource?: boolean
 
   isServerBuild?: boolean
+   // options to pass on to vue/compiler-sfc
+  script?: Partial<
+   Omit<
+     SFCScriptCompileOptions,
+     | 'id'
+     | 'isProd'
+     | 'inlineTemplate'
+     | 'templateOptions'
+     | 'sourceMap'
+     | 'genDefaultAs'
+     | 'customElement'
+     | 'defineModel'
+     | 'propsDestructure'
+   >
+ > & {
+   /**
+    * @deprecated defineModel is now a stable feature and always enabled if
+    * using Vue 3.4 or above.
+    */
+   defineModel?: boolean
+   /**
+    * @deprecated moved to `features.propsDestructure`.
+    */
+   propsDestructure?: boolean
+ }
 }
 
 let errorEmitted = false
